@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="DESKTOP-STDHGJK" name="Interpolation.InterpolatorTest" skipped="0" tests="24" time="0.058" timestamp="2023-10-25T03:55:36">
+  <properties>
+    <property name="ant.library.dir" value="C:/Program Files/Apache Ant/apache-ant-1.10.14/lib" />
+    <property name="ant.file.type" value="file" />
+    <property name="java.specification.version" value="17" />
+    <property name="ant.project.name" value="interpolation" />
+    <property name="sun.cpu.isalist" value="amd64" />
+    <property name="sun.jnu.encoding" value="Cp1252" />
+    <property name="java.class.path" value="C:\Program Files\Apache Ant\apache-ant-1.10.14\lib\hamcrest-2.2.jar;C:\Users\Ethan\interpolation\build;C:\Program Files\Apache Ant\apache-ant-1.10.14\lib\junit-4.13.jar;C:\Program Files\Apache Ant\apache-ant-1.10.14\lib\ant-launcher.jar;C:\Program Files\Apache Ant\apache-ant-1.10.14\lib\ant.jar;C:\Program Files\Apache Ant\apache-ant-1.10.14\lib\ant-junit.jar;C:\Program Files\Apache Ant\apache-ant-1.10.14\lib\ant-junit4.jar" />
+    <property name="java.vm.vendor" value="Eclipse Adoptium" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="user.variant" value="" />
+    <property name="java.vendor.url" value="https://adoptium.net/" />
+    <property name="os.name" value="Windows 10" />
+    <property name="java.vm.specification.version" value="17" />
+    <property name="user.country" value="US" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-17.0.8.101-hotspot\bin" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner Interpolation.InterpolatorTest skipNonTests=false filtertrace=false haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Ethan\interpolation\report\junit\TEST-Interpolation.InterpolatorTest.xml crashfile=C:\Users\Ethan\interpolation\junitvmwatcher13153021434045014315.properties propsfile=C:\Users\Ethan\interpolation\junit16788743220925078922.properties" />
+    <property name="output.dir" value="output" />
+    <property name="jdk.debug" value="release" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="user.home" value="C:\Users\Ethan" />
+    <property name="user.language" value="en" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="_jacoco.agentFile" value="C:\Users\Ethan\AppData\Local\Temp\jacocoagent14083903781224014779.jar" />
+    <property name="java.version.date" value="2023-08-24" />
+    <property name="java.home" value="C:\Program Files\Eclipse Adoptium\jdk-17.0.8.101-hotspot" />
+    <property name="file.separator" value="\" />
+    <property name="basedir" value="C:\Users\Ethan\interpolation" />
+    <property name="java.vm.compressedOopsMode" value="Zero based" />
+    <property name="jacoco.file" value="report/jacoco/jacoco.exec" />
+    <property name="line.separator" value="&#xd;&#xa;" />
+    <property name="ant.java.version" value="17" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="doc.dir" value="doc" />
+    <property name="user.script" value="" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="java.runtime.version" value="17.0.8.1+1" />
+    <property name="user.name" value="Ethan" />
+    <property name="ant.file" value="C:\Users\Ethan\interpolation\build.xml" />
+    <property name="path.separator" value=";" />
+    <property name="ant.file.type.interpolation" value="file" />
+    <property name="jacoco.dir" value="report/jacoco" />
+    <property name="os.version" value="10.0" />
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment" />
+    <property name="file.encoding" value="Cp1252" />
+    <property name="ant.project.invoked-targets" value="test" />
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM" />
+    <property name="java.vendor.version" value="Temurin-17.0.8.1+1" />
+    <property name="report.dir" value="report" />
+    <property name="junit.dir" value="report/junit" />
+    <property name="build.dir" value="build" />
+    <property name="ant.core.lib" value="C:\Program Files\Apache Ant\apache-ant-1.10.14\lib\ant.jar" />
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues" />
+    <property name="java.io.tmpdir" value="C:\Users\Ethan\AppData\Local\Temp\" />
+    <property name="java.version" value="17.0.8.1" />
+    <property name="user.dir" value="C:\Users\Ethan\interpolation" />
+    <property name="os.arch" value="amd64" />
+    <property name="output.file" value="output/output.txt" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="ant.home" value="C:/Program Files/Apache Ant/apache-ant-1.10.14" />
+    <property name="sun.os.patch.level" value="" />
+    <property name="error.file" value="output/error.txt" />
+    <property name="native.encoding" value="Cp1252" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.10.14 compiled on August 16 2023" />
+    <property name="java.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-17.0.8.101-hotspot\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\Ethan\bin;D:\Git\mingw64\bin;D:\Git\usr\local\bin;D:\Git\usr\bin;D:\Git\usr\bin;D:\Git\mingw64\bin;D:\Git\usr\bin;C:\Users\Ethan\bin;C:\Program Files\Eclipse Adoptium\jdk-17.0.8.101-hotspot\bin;C:\Program Files\Apache Ant\apache-ant-1.10.14;C:\Program Files\Amazon Corretto\jdk1.8.0_342\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Calibre2;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;D:\Git\cmd;C:\Program Files\Apache Ant\apache-ant-1.10.14\bin;C:\Users\Ethan\AppData\Local\Programs\Python\Launcher;C:\Users\Ethan\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;D:\VS Code\Microsoft VS Code\bin;D:\intelFPGA\20.1\modelsim_ase\win32aloem;D:\Git\usr\bin\vendor_perl;D:\Git\usr\bin\core_perl;." />
+    <property name="java.vendor" value="Eclipse Adoptium" />
+    <property name="java.vm.info" value="mixed mode, sharing" />
+    <property name="java.vm.version" value="17.0.8.1+1" />
+    <property name="ant.file.interpolation" value="C:\Users\Ethan\interpolation\build.xml" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="java.class.version" value="61.0" />
+    <property name="src.dir" value="src" />
+  </properties>
+  <testcase classname="Interpolation.InterpolatorTest" name="testCalculateOffsetIterationLesser" time="0.001" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testInterpolatorLargeDataList" time="0.003" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testSum" time="0.001" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testTimesOtherPolynomialNull" time="0.001" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testCanIncrementTimesBackwardNull" time="0.0" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testTimesPolynomialsEmpty" time="0.0" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testZero" time="0.0" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testTimesRingNull" time="0.0" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testInterpolatorNullDataValue" time="0.001" />
+  <testcase classname="Interpolation.InterpolatorTest" name="legacyTestInterpolatingPolynomial" time="0.0" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testInterpolatorDataListEmpty" time="0.0" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testProduct" time="0.001" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testCalculateOffsetSizeEqual" time="0.0" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testIdentity" time="0.0" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testInterpolatorNullRing" time="0.0" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testCalculateOffsetNegativeIteration" time="0.0" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testCanIncrementTimesForwardNext" time="0.0" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testCanIncrementTimesForwardNull" time="0.001" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testCalculateOffsetNegativeSize" time="0.0" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testInterpolatorNullDataList" time="0.0" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testCalculateOffsetIterationGreater" time="0.0" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testCanIncrementTimesForwardNotNext" time="0.0" />
+  <testcase classname="Interpolation.InterpolatorTest" name="stressTestInterpolation" time="0.005" />
+  <testcase classname="Interpolation.InterpolatorTest" name="testTimesIterationLessSize" time="0.0" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
