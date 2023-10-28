@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DoubleRing.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">interpolation</a> &gt; <a href="index.source.html" class="el_package">RingsPackage</a> &gt; <span class="el_source">DoubleRing.java</span></div><h1>DoubleRing.java</h1><pre class="source lang-java linenums">package RingsPackage;
+
+import java.util.Objects;
+
+//class to implement ring for Double data type
+<span class="fc" id="L6">public class DoubleRing implements Ring&lt;Double&gt; {</span>
+    
+    //returns zero in correct type
+    @Override
+    public Double zero() {
+<span class="fc" id="L11">        return 0.;</span>
+    }
+
+    //returns 1 in correct type
+    @Override
+    public Double identity() {
+<span class="fc" id="L17">        return 1.;</span>
+    }
+
+    //returns -1 in correct type
+    @Override
+    public Double negative() {
+<span class="nc" id="L23">        return -1.;</span>
+    }
+
+    //returns sum of two doubles
+    @Override
+    public Double sum(Double x, Double y) {
+        //check that inputs aren't null
+<span class="fc" id="L30">        Objects.requireNonNull(x, &quot;Double must not be null&quot;);</span>
+<span class="fc" id="L31">        Objects.requireNonNull(y, &quot;Double must not be null&quot;);</span>
+
+<span class="fc" id="L33">        return x + y;</span>
+    }
+
+    //returns product of two doubles
+    @Override
+    public Double product(Double x, Double y) {
+        //check that inputs aren't null
+<span class="fc" id="L40">        Objects.requireNonNull(x, &quot;Double must not be null&quot;);</span>
+<span class="fc" id="L41">        Objects.requireNonNull(y, &quot;Double must not be null&quot;);</span>
+
+<span class="fc" id="L43">        return x * y;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

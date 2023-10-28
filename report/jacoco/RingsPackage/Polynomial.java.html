@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Polynomial.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">interpolation</a> &gt; <a href="index.source.html" class="el_package">RingsPackage</a> &gt; <span class="el_source">Polynomial.java</span></div><h1>Polynomial.java</h1><pre class="source lang-java linenums">package RingsPackage;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Objects;
+
+//a class to represent a polynomial
+public class Polynomial&lt;T&gt; implements Iterable&lt;T&gt; {
+    
+    //list field of coefficients of the polynomial
+    private List&lt;T&gt; coefficients;
+
+    //constructor of polynomial class. Sets coefficients field
+<span class="fc" id="L16">    private Polynomial(List&lt;T&gt; coefficients) {</span>
+<span class="fc" id="L17">        this.coefficients = new ArrayList&lt;T&gt;(coefficients);   //using ArrayList constructor to avoid copying coefficients list</span>
+<span class="fc" id="L18">    }</span>
+
+    //returns copy of polynomial with identical arguments
+    public static final &lt;S&gt; Polynomial&lt;S&gt; from(List&lt;S&gt; coefficients) {
+<span class="fc" id="L22">        Objects.requireNonNull(coefficients, &quot;Coefficients list must not be null&quot;);</span>
+
+<span class="fc" id="L24">        return new Polynomial&lt;S&gt;(coefficients);    //maybe pass in coefficients as List.copy for immutable   </span>
+    }
+
+    //returns copy of coefficients list
+    public List&lt;T&gt; getCoefficients() {
+<span class="fc" id="L29">       return new ArrayList&lt;&gt;(coefficients);</span>
+    }
+
+    
+    //for things like toString() you can have IDE autofill templates for you
+    @Override
+    public String toString() {
+<span class="fc" id="L36">        return coefficients.toString();</span>
+    }
+
+   // overrides method of Iterable interface
+    @Override
+    public Iterator&lt;T&gt; iterator() {
+<span class="nc" id="L42">        return coefficients.iterator();</span>
+    }
+
+
+
+
+    //returns a ListIterator that is pointing at index i
+    public ListIterator&lt;T&gt; listIterator(int i) {
+        //check that input is valid else throw exception
+<span class="pc bpc" id="L51" title="2 of 4 branches missed.">        if (i &lt; 0 || i &gt; getCoefficients().size())</span>
+<span class="nc" id="L52">            throw new IndexOutOfBoundsException(i);</span>
+
+<span class="fc" id="L54">        return getCoefficients().listIterator(i);</span>
+    }
+
+    //adds two polynomials
+    public Polynomial&lt;T&gt; plus(Polynomial&lt;T&gt; other, Ring&lt;T&gt; ring) {
+        //check for no null inputs
+<span class="fc" id="L60">        Objects.requireNonNull(other, &quot;input polynomial must not be null&quot;);</span>
+<span class="fc" id="L61">        Objects.requireNonNull(ring, &quot;input ring must not be null&quot;);</span>
+
+        List&lt;T&gt; sum;                         //final sum of inputs
+        List&lt;T&gt; smallerPolynomial;           //stores copy of smaller of two inputs
+
+        //record which is shorter polynomial and set sum equal to coefficients list of larger polynomial
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        if (getCoefficients().size() &gt; other.getCoefficients().size()){</span>
+            //initialize as new ArrayLists for O(1) access regardless of if coefficients implemented as LinkedList or ArrayList
+<span class="fc" id="L69">            smallerPolynomial = new ArrayList&lt;&gt;(other.getCoefficients());</span>
+<span class="fc" id="L70">            sum = new ArrayList&lt;&gt;(getCoefficients());</span>
+        }
+        else {
+            //initialize as new ArrayLists for O(1) access regardless of if coefficients implemented as LinkedList or ArrayList
+<span class="fc" id="L74">            smallerPolynomial = new ArrayList&lt;&gt;(this.getCoefficients());</span>
+<span class="fc" id="L75">            sum = new ArrayList&lt;&gt;(other.getCoefficients());</span>
+        }
+
+<span class="fc" id="L78">        ListIterator&lt;T&gt; smallerIterator = smallerPolynomial.listIterator(0); //iterator to trace through small list</span>
+<span class="fc" id="L79">        ListIterator&lt;T&gt; sumIterator = sum.listIterator(0);                   //iterator to trace through sum list</span>
+
+        //add coefficients of smaller polynomial into sum
+<span class="pc bpc" id="L82" title="1 of 4 branches missed.">        while (smallerIterator.hasNext() &amp;&amp; sumIterator.hasNext()) {</span>
+<span class="fc" id="L83">            sumIterator.set(ring.sum(sumIterator.next(), smallerIterator.next()));</span>
+        }
+<span class="fc" id="L85">        return from(sum);</span>
+    }
+
+    //multiplies two polynomials
+    public Polynomial&lt;T&gt; times(Polynomial&lt;T&gt; other, Ring&lt;T&gt; ring) {
+        //check for no null inputs
+<span class="fc" id="L91">        Objects.requireNonNull(other, &quot;input polynomial must not be null&quot;);</span>
+<span class="fc" id="L92">        Objects.requireNonNull(ring, &quot;input ring must not be null&quot;);</span>
+
+<span class="fc" id="L94">        List&lt;T&gt; resultList = new ArrayList&lt;&gt;();                                        //holds results of multiplication</span>
+<span class="fc" id="L95">        int size = getCoefficients().size() + other.getCoefficients().size() - 1;      //size of final product</span>
+        
+        //iterate once for each element in final product
+<span class="fc bfc" id="L98" title="All 2 branches covered.">        for (int iteration = 0, offset = 0; iteration &lt; size; iteration++) {</span>
+            //if iterates outside bounds of input lists' sizes
+<span class="fc" id="L100">            offset = calculateOffset(iteration, other.getCoefficients().size());</span>
+            
+            //initialize iterators for this and other polynomial
+<span class="fc" id="L103">            ListIterator&lt;T&gt; pIterator = listIterator(offset);</span>
+<span class="fc" id="L104">            ListIterator&lt;T&gt; qIterator = other.listIterator(1 + iteration - offset);</span>
+            //add 1 to input b/c previous() looks 1 ahead of given index compared to next() 
+<span class="fc" id="L106">            List&lt;T&gt; productsList = new ArrayList&lt;&gt;();                                   //list to store the products</span>
+            
+            //do multiplication for current index
+<span class="fc bfc" id="L109" title="All 2 branches covered.">            while (canIncrementTimes(pIterator, qIterator)) {                      //could reduce complexity here with a helper method - Complexity TELLS YOU that there can be made a change</span>
+<span class="fc" id="L110">                productsList.add(ring.product(pIterator.next(), qIterator.previous()));</span>
+            }
+            //compute sum of products and add it to result lst
+<span class="fc" id="L113">            resultList.add(Rings.sum(productsList, ring));</span>
+        }
+<span class="fc" id="L115">        return new Polynomial&lt;&gt;(resultList);</span>
+    }
+
+    //helper method to calculate offset for times method
+    private int calculateOffset(int iteration, int listSize) {
+<span class="fc" id="L120">        int offset = 0;</span>
+
+        //if offset exceeds size of the list
+<span class="fc bfc" id="L123" title="All 2 branches covered.">        if (iteration &gt;= listSize)</span>
+<span class="fc" id="L124">                offset = iteration - listSize + 1;</span>
+
+<span class="fc" id="L126">        return offset;</span>
+    }
+
+    //helper method to check if iterators can increment in times() method
+    private boolean canIncrementTimes(ListIterator&lt;T&gt; forward, ListIterator&lt;T&gt; backward) {
+<span class="fc bfc" id="L131" title="All 4 branches covered.">        return forward.hasNext() &amp;&amp; backward.hasPrevious();</span>
+    }
+
+    //Inner class to facilitate testing of helper methods
+    public class TestClass {
+
+        //wrapper for calculateOffset helper method
+		public int calculateOffset(int iteration, int listSize) {
+            return Polynomial.this.calculateOffset(iteration, listSize);
+		}
+
+        //wrapper for canIncrementTimes helper method
+        public boolean canIncrementTimes(ListIterator&lt;T&gt; forward, ListIterator&lt;T&gt; backward) {
+            return Polynomial.this.canIncrementTimes(forward, backward);
+        }
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
