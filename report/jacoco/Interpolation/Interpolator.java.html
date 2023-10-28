@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Interpolator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">interpolation</a> &gt; <a href="index.source.html" class="el_package">Interpolation</a> &gt; <span class="el_source">Interpolator.java</span></div><h1>Interpolator.java</h1><pre class="source lang-java linenums">package Interpolation;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+
+import RingsPackage.Polynomial;
+import RingsPackage.PolynomialRing;
+import RingsPackage.Ring;
+
+<span class="fc" id="L11">public class Interpolator {</span>
+    
+    //method to return polynomial that interpolates input data list
+    public &lt;T&gt; Polynomial&lt;T&gt; interpolatingPolynomial(List&lt;T&gt; dataList, Ring&lt;T&gt; ring) {
+        //check that input list not null
+<span class="fc" id="L16">        Objects.requireNonNull(dataList, &quot;dataList must not be null&quot;);</span>
+<span class="fc" id="L17">        Objects.requireNonNull(ring, &quot;ring must not be null&quot;);</span>
+        //initialize new polynomial ring
+<span class="fc" id="L19">        PolynomialRing&lt;T&gt; polyRing = PolynomialRing.instance(ring);</span>
+        
+        //handle case where input list is empty
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        if (dataList.isEmpty())</span>
+<span class="fc" id="L23">            return polyRing.zero();</span>
+        
+        //initialize polynomial to store result
+<span class="fc" id="L26">        Polynomial&lt;T&gt; result = polyRing.identity();</span>
+
+        /**
+         * For each xi in input list
+         * check that xi not null
+         * initialze new Polynomial to store x - xi
+         * assign result * binomial to result field
+         */
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        for (T element : dataList) {</span>
+<span class="fc" id="L35">            Objects.requireNonNull(element, &quot;Input data values must not be null&quot;);</span>
+            //binomial &lt;-- x - element   ; x represented by coefficient of 1 (identity), -element represented as product of -1*elmement
+<span class="fc" id="L37">            Polynomial&lt;T&gt; binomial = Polynomial.from(Arrays.asList(ring.identity(), ring.product(ring.negative(), element)));</span>
+<span class="fc" id="L38">            result = polyRing.product(binomial, result);</span>
+<span class="fc" id="L39">        }</span>
+<span class="fc" id="L40">        return result;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
